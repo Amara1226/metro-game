@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.screen.active {
+    display: flex;
+}
+#game {
+    align-items: flex-start;
+}
+
+#game_container {
+    display: flex;
+    gap: 40px;
+}
+
+#grid_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 90vmin;
+    aspect-ratio: 1/1;
+    border: 2px solid black;
+    background: linear-gradient(
+        to right,
+        white 0%,
+        white 35%,
+        #a3cfff 35%,
+        #a3cfff 65%,
+        white 65%,
+        white 100%
+    );
+}
+
+
+.square {
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.highlight {
+    background-color: yellow;
+    opacity: 0.5;
+}
+.highlight:hover {
+    opacity: 1;
+}
+
+.selected-station {
+    outline: 3px solid orange;
+}
+
+.train-station {
+    border: 2px solid black !important;
+}
+
+.station-buda {
+    box-shadow: inset 0 0 0 3px #2855a6;
+}
+.station-pest {
+    box-shadow: inset 0 0 0 3px #a62828;
+}
+
+#side_panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border: 2px solid black;
+    padding: 20px;
+    width: 250px;
+    background-color: #f5deb3;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #0044cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: black;
+}
+#line_display {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 6px 12px;
+    border: 2px solid black;
+    border-radius: 6px;
+    background: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.line_color_box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+#player_name_input {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+    width: 200px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+#player_name_display {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 6px 12px;
+    border: 2px solid black;
+    border-radius: 6px;
+    background: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#scores_list {
+    border: 2px solid black;
+    padding: 15px;
+    background-color: white;
+    width: 350px;
+    min-height: 200px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+}
+
+.score_entry {
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+}
+
+.score_entry:last-child {
+    border-bottom: none;
+}
+.endpoint {
+    outline: 10px solid grey;
+    outline-offset: -10px;
+}

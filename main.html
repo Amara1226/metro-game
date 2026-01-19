@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Station: Budapest</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.10/dist/full.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-base-200 flex justify-center items-start min-h-screen py-10">
+
+<div id="main_menu" class="screen active flex flex-col items-center gap-6 bg-white p-10 rounded-xl shadow-lg">
+    <h1 class="text-4xl font-bold">Subways of Budapest</h1>
+
+    <label for="player_name_input" class="text-lg">Enter your name:</label>
+    <input id="player_name_input"
+           class="input input-bordered w-64 text-center"
+           type="text"
+           placeholder="Your name..." />
+
+    <div class="flex flex-col gap-3 w-full">
+        <button id="start_btn" class="btn btn-primary w-full">Start Game</button>
+        <button id="rules_btn" class="btn w-full">Rules</button>
+        <button id="scores_btn" class="btn w-full">Scores</button>
+    </div>
+</div>
+
+
+<div id="game" class="screen hidden w-full flex-col items-center">
+    
+    <div id="game_container" class="flex gap-10 bg-white p-8 rounded-xl shadow-xl">
+
+        <div id="grid_container"></div>
+
+        <div id="side_panel"
+             class="flex flex-col gap-4 bg-base-100 border border-base-300 p-6 rounded-xl shadow-md w-64">
+
+            <div id="player_name_display"
+                 class="text-xl font-bold bg-white p-3 rounded-md border text-center"></div>
+
+            <div class="text-sm text-gray-600">The starting point is outlined in grey.</div>
+
+            <h2 class="text-xl font-semibold">Current Line</h2>
+            <div id="line_display"
+                 class="p-3 border rounded-md bg-white text-center text-lg font-bold"></div>
+
+            <h2 class="text-xl font-semibold">Round</h2>
+            <div id="round_info" class="p-2 border bg-white rounded-md text-center">1 / 4</div>
+
+            <h2 class="text-xl font-semibold">Elapsed Time</h2>
+            <div id="timer" class="p-2 border bg-white rounded-md text-center">00:00</div>
+
+            <h2 class="text-xl font-semibold">Current Card</h2>
+            <div id="current_card" class="p-2 border bg-white rounded-md text-center">
+                Please draw a card!
+            </div>
+
+            <div id="deck_size" class="text-sm text-gray-700 text-center"></div>
+
+            <button id="draw_card_btn" class="btn btn-primary w-full">Draw Card</button>
+            <button id="return_from_game" class="btn w-full">Return to Main Menu</button>
+            <div id="inline_results" style="display:none; margin-top:20px; font-size:1.2rem;"></div>
+        </div>
+    </div>
+</div>
+
+<div id="rules"
+     class="screen hidden flex flex-col items-center bg-white p-10 rounded-xl shadow-lg max-w-3xl">
+
+    <h1 class="text-3xl font-bold mb-6">Game Rules</h1>
+
+    <div class="prose text-justify leading-relaxed max-w-2xl">
+
+        <h2 class="text-2xl font-bold mt-4">Overview</h2>
+        <p>
+            Your objective is to build four metro lines across Budapest—one per round. Each line begins
+            from its designated starting station, marked with a grey outline. You extend the line by
+            drawing cards and connecting valid stations while following the placement rules. After all
+            four lines are completed, your network is scored.
+        </p>
+
+        <h2 class="text-2xl font-bold mt-4">Drawing Cards</h2>
+        <p>
+            Each round includes up to eight card draws. A card determines the type of station you can
+            connect to (A, B, C, D, or ?). “?” cards allow any station type. Drawing the switch card 
+            lets you continue the line from either of your line’s endpoints. Eligible stations are 
+            highlighted automatically. If a card is drawn and no valid move exists, the round ends.
+        </p>
+
+        <h2 class="text-2xl font-bold mt-4">Placing Segments</h2>
+        <p>
+            Segments must be straight: horizontal, vertical, or diagonal. A segment cannot pass through 
+            another station, cross existing segments, or connect to a station already used by the current 
+            line. When you place a valid segment, the newly connected station becomes your new endpoint.
+        </p>
+
+        <h2 class="text-2xl font-bold mt-4">Round Progression</h2>
+        <p>
+            A round concludes when eight cards have been drawn or when a card leaves you without any 
+            valid connections. When a round ends, the next metro line begins at its own starting station.
+            After four rounds, the game ends.
+        </p>
+
+        <h2 class="text-2xl font-bold mt-4">Scoring</h2>
+        <p>
+            When all four lines are completed, the game calculates your final score. Each line earns 
+            points based on district coverage and station distribution. Additional points are awarded 
+            for crossing the Danube, touching railway stations, and forming junctions between lines.
+            Your final score and time are displayed and stored in the scoreboard.
+        </p>
+
+    </div>
+
+    <button id="return_from_rules" class="btn mt-8">Return to Main Menu</button>
+</div>
+
+
+<div id="scores_screen"
+     class="screen hidden flex flex-col items-center bg-white p-10 rounded-xl shadow-lg">
+
+    <h1 class="text-3xl font-bold mb-6">Scoreboard</h1>
+    <div id="scores_list"
+         class="w-96 min-h-[200px] bg-base-100 p-4 rounded-xl border shadow-inner"></div>
+
+    <button id="return_from_scores" class="btn mt-6">Return to Main Menu</button>
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
