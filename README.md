@@ -23,7 +23,7 @@ The project focuses on interactive game logic, state management, and clean front
 ---
 
 ## How to Run
-Open `index.html` in a web browser.
+Open `main.html` in a web browser.
 
 ---
 
